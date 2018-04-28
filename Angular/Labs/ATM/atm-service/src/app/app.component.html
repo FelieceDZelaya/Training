@@ -1,0 +1,37 @@
+<div class="jumbotron text-center">
+  <h1>{{ title }}</h1>
+  <p>This is a test ATM App</p>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <p>
+        Our current business date is {{ businessDate | date }}
+      </p>
+      <p>Acct No. {{ accountNumber }}</p>
+      <p>Acct Name {{ accountName }}</p>
+      <p>Account Mini Statement</p>
+      <p>  
+        Initial Balance: {{ initialBalance | currency }} <br />
+        Balance after Atm Withdrawal of $300: {{ balanceAfterWithdrawal | currency }} <br />
+        Balance after Atm Deposit of $4000: {{ balanceAfterDeposit| currency }} <br />
+      </p>
+    </div>
+    <div class="col-sm-6">
+        <table>
+          <thead>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Amount</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let txn of lastTransactions">
+              <td>{{ txn.dateOfTransaction | date }}</td>
+              <td>{{ txn.transactionType }}</td>
+              <td>{{ txn.amount | currency }}</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
+</div>
